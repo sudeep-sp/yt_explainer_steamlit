@@ -18,7 +18,7 @@ def fetch_youtube_transcript(video_url):
     try:
         # Fetch the transcript
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[
-                                                         'en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'ru', 'zh-Hans', 'zh-Hant'])
+                                                         'en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'ru', 'zh-Hans', 'zh-Hant', 'hi'])
         # Combine all text into a single string
         full_text = " ".join([item['text'] for item in transcript])
         return full_text
