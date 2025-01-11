@@ -23,6 +23,7 @@ def fetch_youtube_transcript(video_url):
 
         # Remove any additional parameters in the URL
         video_id = video_id.split("&")[0]
+
         # Fetch the transcript
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[
                                                          'en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'ru', 'zh-Hans', 'zh-Hant', 'hi'])
