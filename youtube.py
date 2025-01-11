@@ -12,10 +12,17 @@ os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
 
 def fetch_youtube_transcript(video_url):
-    # Extract the video ID from the URL
-    video_id = video_url.split("v=")[-1]
-
     try:
+        # Normalize the video ID
+        if "watch?v=" in video_url:
+            video_id = video_url.split("v=")[-1]
+        elif "youtu.be/" in video_url:
+            video_id = video_url.split("youtu.be/")[-1]
+        else:
+            raise ValueError("Invalid YouTube URL format")
+
+        # Remove any additional parameters in the URL
+        video_id = video_id.split("&")[0]
         # Fetch the transcript
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[
                                                          'en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'ru', 'zh-Hans', 'zh-Hant', 'hi'])
