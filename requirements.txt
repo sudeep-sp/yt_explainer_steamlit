@@ -1,6 +1,5 @@
 youtube_transcript_api
 langchain_core
 langchain_openai
-os
-dotenv
 streamlit
+python-dotenv
